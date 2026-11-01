@@ -10,6 +10,7 @@
     "bounces.unknownService": "Unknown service.",
     "campaigns.addAltText": "Add alternate plain text message",
     "campaigns.addAttachments": "Add attachments",
+    "campaigns.attachmentAdded": "Added attachment '{name}'",
     "campaigns.archiveEnable": "Publish to public archive",
     "campaigns.archiveHelp": "Publish (running, paused, finished) the campaign message on the public archive.",
     "campaigns.archiveMeta": "Campaign metadata",
