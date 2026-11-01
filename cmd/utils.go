@@ -209,7 +209,7 @@ func parseDateTime(s string) (time.Time, bool) {
 	case 19:
 		layout = "2006-01-02T15:04:05"
 	default:
-		return time.Time{}, false
+		layout = time.RFC3339
 	}
 	t, err := time.ParseInLocation(layout, s, time.Local)
 

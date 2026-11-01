@@ -94,8 +94,8 @@ func (a *App) viewAnalytics(c *echo.Context, resource string) error {
 		adminView:          newAdminView(c, a.i18n.T("globals.terms.analytics"), "", resource+".analytics"),
 		Items:              items,
 		Resource:           resource,
-		FromInput:          from.Format("2006-01-02T15:04"),
-		ToInput:            to.Format("2006-01-02T15:04"),
+		FromInput:          from.Format(time.RFC3339),
+		ToInput:            to.Format(time.RFC3339),
 		Interval:           c.QueryParam("interval"),
 		DisableTracking:    a.cfg.Privacy.DisableTracking,
 		IndividualTracking: a.cfg.Privacy.IndividualTracking,
@@ -111,8 +111,8 @@ func (a *App) viewAnalytics(c *echo.Context, resource string) error {
 	// Pull analytics for the selected campaigns or lists.
 	if len(items) > 0 {
 		var (
-			fromStr = from.Format("2006-01-02 15:04:05")
-			toStr   = to.Format("2006-01-02 15:04:05")
+			fromStr = from.Format(time.RFC3339)
+			toStr   = to.Format(time.RFC3339)
 			ids     = make([]int, len(items))
 		)
 		for i, item := range items {
