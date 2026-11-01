@@ -278,8 +278,12 @@ func (a *App) getAnalytics(c *echo.Context, resource string) error {
 	return c.JSON(http.StatusOK, okResp{out})
 }
 
-// sumAnalyticsCounts returns the total count across the given analytics rows.
+// sumAnalyticsCounts returns the combined list totals when available or sums up the rows.
 func sumAnalyticsCounts(rows []models.CampaignAnalyticsCount) int {
+	if len(rows) > 0 && rows[0].Total != nil {
+		return *rows[0].Total
+	}
+
 	total := 0
 	for _, r := range rows {
 		total += r.Count
